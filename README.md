@@ -1,1 +1,5 @@
-# Configure-Logs
+# Personal Configuration
+
+## zsh
+
+j
