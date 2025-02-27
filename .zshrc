@@ -11,7 +11,7 @@ ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 source "${ZINIT_HOME}/zinit.zsh"
 
-# turbo 模式的启动
+# turbo 模式的qidong
 PS1="READY > "
 zinit ice wait'!0' 
 
@@ -35,30 +35,6 @@ zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
 zinit ice blockf
 
-# zsh 自带的功能
-setopt autocd # 更改文件夹
-setopt correct # 自动更正命令
-# 环境变量的设置
-export EDITOR=code      # 编辑文件
-export VISUAL=code      # 阅读文件
-export SUDO_EDITOR=code # 设置默认编辑器为vscode
-export FCEDIT=code      # 设置默认编辑器为vscode
-export TERMINAL=wezterm # 设置默认终端
-
-# 历史记录的设置
-HISTSIZE=10000  #历史记录的最大值
-HISTFILE=~/.zsh_history
-SAVEHIST=$HISTSIZE  #最大存储条数
-HISTDUP=erase #删除重复的记录
-setopt appendhistory #追加历史记录
-setopt sharehistory #共享历史记录
-setopt hist_ignore_space
-setopt hist_ignore_all_dups #忽略重复的记录
-setopt hist_save_no_dups #不存储重复的记录
-setopt hist_ignore_dups  #忽略重复的记录
-setopt hist_find_no_dups #不查找重复的记录
-setopt NO_CASE_GLOB #不区分大小写
-##$ 其他的终端工具
 # fzf
 eval "$(fzf --zsh)"
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git" #显示隐藏文件,同时排除gitignore所忽略的文件
@@ -93,14 +69,33 @@ eval $(thefuck --alias fk)
 eval "$(zoxide init zsh)"
 alias cd="z"
 # bat (better cat)
-export BAT_THEME="OneHalfDark" # 设置主题
+export BAT_THEME="Dracula" # 设置主题
 # eza (better ls)
 alias ls="eza -a --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions --git-ignore --git-repos-no-status"
 
+# zsh 自带的功能
+setopt autocd # 更改文件夹
+setopt correct # 自动更正命令
 
+# 环境变量的设置
+export EDITOR=code      # 编辑文件
+export VISUAL=code      # 阅读文件
+export SUDO_EDITOR=code # 设置默认编辑器为vscode
+export FCEDIT=code      # 设置默认编辑器为vscode
+export TERMINAL=wezterm # 设置默认终端
 
-
-
+# 历史记录的设置
+HISTSIZE=10000  #历史记录的最大值
+HISTFILE=~/.zsh_history
+SAVEHIST=$HISTSIZE  #最大存储条数
+HISTDUP=erase #删除重复的记录
+setopt appendhistory #追加历史记录
+setopt sharehistory #共享历史记录
+setopt hist_ignore_space
+setopt hist_ignore_all_dups #忽略重复的记录
+setopt hist_save_no_dups #不存储重复的记录
+setopt hist_ignore_dups  #忽略重复的记录
+setopt hist_find_no_dups #不查找重复的记录
 # 快捷命令的定义
 alias c='clear' # 清屏
 alias q='exit'  #退出终端
