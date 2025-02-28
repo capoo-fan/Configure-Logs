@@ -71,5 +71,75 @@ export TERMINAL=wezterm # set Visual Studion Code as the default terminal
 export FCEDIT=code       
 ```
 
+## Small terminal tools
 
+### fzf
 
+```shell
+eval "$(fzf --zsh)"
+export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git" #显示隐藏文件,同时排除gitignore所忽略的文件
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"  # ctrl+t 启动fzf
+export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'" #shortcut=CTRL+T,and limit the preview to the first 500 lines
+export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always{} | head -200'" #alt+t预览文件内容_fzf
+_fzf_comprun(){
+  local command=$1
+  shift
+
+  case "$command" in #设置预览命令,通过一个switch case语句来区分不同的命令
+  cd)           fzf --preview 'eza --tree --color=always {}|head -200' "$@" ;; #会以树状结构展示文件
+  export|unset) fzf --preveiw "eval 'echo \$' {}"                       "$@" ;;
+  ssh)          fzf --preview 'dig {}'                                  "$@" ;;
+  *)            fzf --preview "--preview 'bat -n --color=always --line-range :500 {}'" "$@" ;;
+  esac
+}
+_fzf_compgen_path(){
+  fd --hidden --exclude .git . "$1" 
+}
+_fzf_compgen_dir(){
+  fd --type=d --hidden --exclude .git . "$1" #自动补全文件路径
+}
+```
+
+### bat (better cat)
+
+[bat](https://github.com/sharkdp/bat) will display the contents of a file in the terminal,with syntax highlighting and you can set theme.
+
+```shell
+export BAT_THEME="Dracula" #set theme
+```
+
+### zoxide (better cd)
+
+[zoxide](https://github.com/ajeetdsouza/zoxide)
+
+```shell
+eval "$(zoxide init zsh)"
+alias cd="z" #alias cd to z
+```
+
+### eza (better ls)
+
+[eza](https://github.com/eza-community/eza)
+
+### thefuck
+
+[thefuck](https://github.com/nvbn/thefuck)
+Thefuck will automatically correct your pervious wrong command.
+For example,if you type 'par thefuck'(Correct command is 'paru thefuck'), thefuck will automatically correct it to 'paru thefuck' after typing 'fk' or 'thefuck' command.
+```shell
+eval $(thefuck --alias)
+eval $(thefuck --alias fk) #alias fk to thefuck
+```
+
+### btop
+
+[btop](https://github.com/aristocratos/btop)
+
+Btop can check your computer's status in the terminal .
+
+### speedtest
+
+[speedtest](https://github.com/sivel/speedtest-cli)
+
+Speedtest can check your internet speed in the terminal.
