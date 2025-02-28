@@ -71,5 +71,5 @@ export TERMINAL=wezterm # set Visual Studion Code as the default terminal
 export FCEDIT=code       
 ```
 
-## wezterm
+
 
