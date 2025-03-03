@@ -12,7 +12,7 @@ After installing ,what you want to do first is to choose a theme.I recommend you
 
 In my powerlevel10k configuration file, I change the background color and the color of the prompt to make it more beautiful.
 
-![powerlevel10k](screenshoot/powerlevel10k.png)
+![powerlevel10k](screenshoot/image.png)
 
 ### plugin and other configurations
 
@@ -21,7 +21,6 @@ In my powerlevel10k configuration file, I change the background color and the co
 * zsh-autosuggestions : This plugin will show you the suggestions based on your history.
 * zsh-syntax-highlighting : This plugin will highlight the syntax of your command. (you can change the color in the configuration file)
 * zsh-vi-mode : This plugin will let you use vim mode in zsh if you are a vim user.
-
 * oh my zsh : If you want to use oh-my-zsh plugin, you can write the following commands into the .zshrc file
 
 ```shell
@@ -108,6 +107,9 @@ _fzf_compgen_dir(){
 ```shell
 export BAT_THEME="Dracula" #set theme
 ```
+**fzf with bat**
+
+![bat](screenshoot/bat.png)
 
 ### zoxide (better cd)
 
@@ -138,8 +140,24 @@ eval $(thefuck --alias fk) #alias fk to thefuck
 
 Btop can check your computer's status in the terminal .
 
+![tokyonighttheme](screenshoot/btop.png)
+
 ### speedtest
 
 [speedtest](https://github.com/sivel/speedtest-cli)
 
 Speedtest can check your internet speed in the terminal.
+
+### ncdu
+
+[ncdu](https://dev.yorhel.nl/ncdu)
+
+ncdu can check the disk usage in the terminal.
+
+### fastfetch
+
+[fastfetch](https://github.com/LinusDietrich/fastfetch)
+
+fastfetch can display your system information in the terminal in a fancy way.
+
+![fastfetch](screenshoot/fastfetch.png)
