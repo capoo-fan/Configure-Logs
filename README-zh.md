@@ -38,27 +38,27 @@ alias c="clear"
 * Built-in features of Zsh
 
 ```shell
-setopt autocd # Change directory automatically
-setopt correct # Correct errors automatically```
+setopt autocd # 自动cd到目录
+setopt correct # 自动修正命令
 ```
 
 * zsh-history
 
 ```shell
-HISTSIZE=10000  #The maximum number of history records
+HISTSIZE=10000  #设置历史记录的大小
 HISTFILE=~/.zsh_history
 SAVEHIST=$HISTSIZE  
-HISTDUP=erase #Erase the duplicate history records
+HISTDUP=erase #删除重复的历史记录
 setopt appendhistory 
-setopt sharehistory #Share your jistory records in other shell
+setopt sharehistory #共享历史记录
 
 setopt hist_ignore_space
 
-setopt hist_ignore_all_dups # Ignore the duplicate records
+setopt hist_ignore_all_dups # 删除重复的历史记录
 setopt hist_ignore_dups  
 
-setopt hist_save_no_dups # Do not restore the duplicate records
-setopt hist_find_no_dups # Do not search for duplicate records.
+setopt hist_save_no_dups # 保存历史记录时不删除重复的记录
+setopt hist_find_no_dups #  查找历史记录时不删除重复的记录
 ```
 
 ### environment variables
@@ -66,8 +66,8 @@ setopt hist_find_no_dups # Do not search for duplicate records.
 ```shell
 export EDITOR=code       
 export VISUAL=code      
-export SUDO_EDITOR=code #  set Visual Studio Code as the default editor
-export TERMINAL=wezterm # set Visual Studion Code as the default terminal
+export SUDO_EDITOR=code #   将默认编辑器设置为 Visual Studion Code
+export TERMINAL=wezterm #   将默认终端设置为 wezterm
 export FCEDIT=code       
 ```
 
@@ -77,17 +77,17 @@ export FCEDIT=code
 
 ```shell
 eval "$(fzf --zsh)"
-export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git" #显示隐藏文件,同时排除gitignore所忽略的文件
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"  # ctrl+t 启动fzf
+export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git" #显示隐藏文件,同时排除 gitignore 所忽略的文件
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"  # ctrl+t 启动 fzf
 export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
-export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'" #shortcut=CTRL+T,and limit the preview to the first 500 lines
-export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always{} | head -200'" #alt+t预览文件内容_fzf
+export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'" # shortcut = CTRL+T , 预览文件内容
+export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always{} | head -200'" # alt+t 预览文件内容 fzf
 _fzf_comprun(){
   local command=$1
   shift
 
-  case "$command" in #设置预览命令,通过一个switch case语句来区分不同的命令
-  cd)           fzf --preview 'eza --tree --color=always {}|head -200' "$@" ;; #会以树状结构展示文件
+  case "$command" in #设置预览命令,通过一个 switch case 语句来区分不同的命令
+  cd)           fzf --preview 'eza --tree --color=always {}|head -200' "$@" ;;  #会以树状结构展示文件
   export|unset) fzf --preveiw "eval 'echo \$' {}"                       "$@" ;;
   ssh)          fzf --preview 'dig {}'                                  "$@" ;;
   *)            fzf --preview "--preview 'bat -n --color=always --line-range :500 {}'" "$@" ;;
@@ -106,7 +106,7 @@ _fzf_compgen_dir(){
 [bat](https://github.com/sharkdp/bat) 可以在终端中显示文件内容，并支持语法高亮，你可以设置主题。
 
 ```shell
-export BAT_THEME="Dracula" #set theme
+export BAT_THEME="Dracula" 
 ```
 
 **fzf with bat**
@@ -129,7 +129,7 @@ alias cd="z" #alias cd to z
 ### thefuck
 
 [thefuck](https://github.com/nvbn/thefuck)
-会自动纠正你之前输入的错误命令。例如，如果你输入了 par thefuck（正确的命令是 paru thefuck），thefuck 会在你输入 fk 或 thefuck 命令后自动纠正它。
+会自动纠正你之前输入的错误命令。例如，如果你输入了 'par thefuck'（ 正确的命令是 'paru thefuck' ） ， thefuck 会在你输入 fk 或 thefuck 命令后自动纠正它。
 
 ```shell
 eval $(thefuck --alias)
