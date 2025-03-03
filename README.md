@@ -12,7 +12,7 @@ After installing ,what you want to do first is to choose a theme.I recommend you
 
 In my powerlevel10k configuration file, I change the background color and the color of the prompt to make it more beautiful.
 
-![powerlevel10k](screenshoot/image.png)
+![powerlevel10k](screenshoot/wezterm.png)
 
 ### plugin and other configurations
 
